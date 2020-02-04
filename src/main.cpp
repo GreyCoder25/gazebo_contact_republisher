@@ -28,6 +28,9 @@ void forcesCb(ConstContactsPtr &_msg){
         contact_message.collision_1 = _msg->contact(i).collision1();
         contact_message.collision_2 = _msg->contact(i).collision2();
 
+        contact_message.body_1_id = _msg->contact(i).wrench().Get(0).body_1_id();
+        contact_message.body_2_id = _msg->contact(i).wrench().Get(0).body_2_id();
+
         contact_message.normal[0] = _msg->contact(i).normal().Get(0).x();
         contact_message.normal[1] = _msg->contact(i).normal().Get(0).y();
         contact_message.normal[2] = _msg->contact(i).normal().Get(0).z();
@@ -53,6 +56,9 @@ void forcesCb(ConstContactsPtr &_msg){
         contact_message.position[0] = 0;
         contact_message.position[1] = 0;
         contact_message.position[2] = 0;
+
+        contact_message.body_1_id = 0;
+        contact_message.body_2_id = 0;
 
         contact_message.depth = 0;
 
